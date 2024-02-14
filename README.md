@@ -1,2 +1,2 @@
 # qb
-QSS Linux Kernel
+QSS Linux Kernel Designed for Space Softwares, Space Ships and ...
