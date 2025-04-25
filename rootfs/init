@@ -1,0 +1,19 @@
+#!/bin/sh
+
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t devtmpfs none /dev
+dmesg -n 1
+clear
+
+# - Create User QSS
+mkdir -p /home/qb
+
+# - Initialize User QSS
+echo "qb:x:1000:1000:QSS,,,:/home/qb:/bin/sh" >> /etc/passwd
+echo "qb ALL=(ALL:ALL) ALL" >> /etc/sudoers
+echo "qb:x:1000:" >> /etc/group
+echo "qb" > /etc/hostname
+echo "qb:qb" | chpasswd
+
+exec sbin/init
